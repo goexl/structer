@@ -1,3 +1,5 @@
-module github.com/goexl/wanip
+module github.com/goexl/structer
 
-go 1.18
+go 1.19
+
+require github.com/mitchellh/mapstructure v1.5.0
