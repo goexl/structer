@@ -13,6 +13,6 @@ func newConverterParams() *converterParams {
 	return &converterParams{
 		zero:   true,
 		squash: true,
-		tag:    "json",
+		tag:    json,
 	}
 }

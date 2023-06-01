@@ -40,6 +40,18 @@ func (cb *converterBuilder) Tag(tag string) *converterBuilder {
 	return cb
 }
 
+func (cb *converterBuilder) Json() *converterBuilder {
+	cb.params.tag = json
+
+	return cb
+}
+
+func (cb *converterBuilder) Str() *converterBuilder {
+	cb.params.tag = defaultTag
+
+	return cb
+}
+
 func (cb *converterBuilder) Build() *converter {
 	return newConverter(cb.params)
 }
