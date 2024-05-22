@@ -3,6 +3,7 @@ package builder
 import (
 	"github.com/goexl/structer/internal/constant"
 	"github.com/goexl/structer/internal/core"
+	"github.com/goexl/structer/internal/hook"
 	"github.com/goexl/structer/internal/param"
 )
 
@@ -60,6 +61,27 @@ func (c *Clone) ErrorOnUnused() (clone *Clone) {
 
 func (c *Clone) ErrorOnUnset() (clone *Clone) {
 	c.params.Unset = true
+	clone = c
+
+	return
+}
+
+func (c *Clone) Type(hook hook.Type) (clone *Clone) {
+	c.params.Hook = hook
+	clone = c
+
+	return
+}
+
+func (c *Clone) Kind(hook hook.Kind) (clone *Clone) {
+	c.params.Hook = hook
+	clone = c
+
+	return
+}
+
+func (c *Clone) Value(hook hook.Value) (clone *Clone) {
+	c.params.Hook = hook
 	clone = c
 
 	return
