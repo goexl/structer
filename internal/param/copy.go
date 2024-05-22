@@ -2,7 +2,6 @@ package param
 
 import (
 	"github.com/goexl/structer/internal/constant"
-	"github.com/goexl/structer/internal/hook"
 	"github.com/mitchellh/mapstructure"
 )
 
@@ -29,7 +28,7 @@ func NewCopy() (copy *Copy) {
 	copy.Untagged = true
 	copy.Weakly = true
 
-	time := hook.NewTime(copy)
+	time := NewTime(copy)
 	copy.Hooks = []mapstructure.DecodeHookFunc{
 		time.PBToTime,
 		time.PBToDuration,

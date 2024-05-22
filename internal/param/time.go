@@ -1,4 +1,4 @@
-package hook
+package param
 
 import (
 	"reflect"
@@ -6,15 +6,14 @@ import (
 
 	"github.com/goexl/gox"
 	"github.com/goexl/structer/internal/constant"
-	"github.com/goexl/structer/internal/hook/internal"
-	"github.com/goexl/structer/internal/param"
+	"github.com/goexl/structer/internal/param/internal"
 )
 
 type Time struct {
-	params *param.Copy
+	params *Copy
 }
 
-func NewTime(params *param.Copy) *Time {
+func NewTime(params *Copy) *Time {
 	return &Time{
 		params: params,
 	}
