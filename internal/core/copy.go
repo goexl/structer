@@ -5,17 +5,17 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-type Clone struct {
-	params *param.Clone
+type Copy struct {
+	params *param.Copy
 }
 
-func NewClone(params *param.Clone) *Clone {
-	return &Clone{
+func NewCopy(params *param.Copy) *Copy {
+	return &Copy{
 		params: params,
 	}
 }
 
-func (c *Clone) Apply() (err error) {
+func (c *Copy) Apply() (err error) {
 	config := new(mapstructure.DecoderConfig)
 	config.ZeroFields = c.params.Zero
 	config.Result = c.params.To

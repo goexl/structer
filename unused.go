@@ -1,3 +1,3 @@
 package structer
 
-var _ = Clone
+var _ = Copy
