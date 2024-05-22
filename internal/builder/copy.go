@@ -38,8 +38,8 @@ func (c *Copy) DisableSquash() (copy *Copy) {
 	return
 }
 
-func (c *Copy) DisableZero() (copy *Copy) {
-	c.params.Zero = false
+func (c *Copy) Zero() (copy *Copy) {
+	c.params.Zero = true
 	copy = c
 
 	return

@@ -22,7 +22,6 @@ type Copy struct {
 
 func NewCopy() (copy *Copy) {
 	copy = new(Copy)
-	copy.Zero = true
 	copy.Squash = true
 	copy.Tag = constant.Json
 	copy.Untagged = true
