@@ -24,8 +24,9 @@ func (c *Clone) Apply() (err error) {
 	config.ErrorUnused = c.params.Unused
 	config.ErrorUnset = c.params.Unset
 	config.WeaklyTypedInput = c.params.Weakly
-	if nil != c.params.Hook {
-		config.DecodeHook = c.params.Hook
+	config.IgnoreUntaggedFields = c.params.Untagged
+	if 0 != len(c.params.Hooks) {
+		config.DecodeHook = mapstructure.ComposeDecodeHookFunc(c.params.Hooks...)
 	}
 
 	if decoder, ne := mapstructure.NewDecoder(config); nil != ne {

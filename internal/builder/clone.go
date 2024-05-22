@@ -52,6 +52,13 @@ func (c *Clone) DisableWeakly() (clone *Clone) {
 	return
 }
 
+func (c *Clone) DisableUntagged() (clone *Clone) {
+	c.params.Untagged = false
+	clone = c
+
+	return
+}
+
 func (c *Clone) ErrorOnUnused() (clone *Clone) {
 	c.params.Unused = true
 	clone = c
@@ -67,21 +74,21 @@ func (c *Clone) ErrorOnUnset() (clone *Clone) {
 }
 
 func (c *Clone) Type(hook hook.Type) (clone *Clone) {
-	c.params.Hook = hook
+	c.params.Hooks = append(c.params.Hooks, hook)
 	clone = c
 
 	return
 }
 
 func (c *Clone) Kind(hook hook.Kind) (clone *Clone) {
-	c.params.Hook = hook
+	c.params.Hooks = append(c.params.Hooks, hook)
 	clone = c
 
 	return
 }
 
 func (c *Clone) Value(hook hook.Value) (clone *Clone) {
-	c.params.Hook = hook
+	c.params.Hooks = append(c.params.Hooks, hook)
 	clone = c
 
 	return
