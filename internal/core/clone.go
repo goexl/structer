@@ -15,7 +15,7 @@ func NewClone(params *param.Clone) *Clone {
 	}
 }
 
-func (c *Clone) Clone() (err error) {
+func (c *Clone) Apply() (err error) {
 	config := new(mapstructure.DecoderConfig)
 	config.ZeroFields = c.params.Zero
 	config.Result = c.params.To
