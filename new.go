@@ -1,7 +1,9 @@
 package structer
 
-var _ = Converter
+import (
+	"github.com/goexl/structer/internal/builder"
+)
 
-func Converter() *converterBuilder {
-	return newConverterBuilder()
+func Clone() *builder.Clone {
+	return builder.NewClone()
 }
