@@ -24,7 +24,6 @@ func NewCopy() (copy *Copy) {
 	copy = new(Copy)
 	copy.Squash = true
 	copy.Tag = constant.Json
-	copy.Untagged = true
 	copy.Weakly = true
 
 	time := NewTime(copy)
