@@ -74,7 +74,10 @@ func (c *Copy) ErrorOnUnset() (copy *Copy) {
 }
 
 func (c *Copy) Type(required hook.Type, others ...hook.Type) (copy *Copy) {
-	c.params.Hooks = append(c.params.Hooks, append([]hook.Type{required}, others...))
+	c.params.Hooks = append(c.params.Hooks, required)
+	for _, other := range others {
+		c.params.Hooks = append(c.params.Hooks, other)
+	}
 	c.params.Weakly = true
 	copy = c
 
@@ -82,7 +85,10 @@ func (c *Copy) Type(required hook.Type, others ...hook.Type) (copy *Copy) {
 }
 
 func (c *Copy) Kind(required hook.Kind, others ...hook.Kind) (copy *Copy) {
-	c.params.Hooks = append(c.params.Hooks, append([]hook.Kind{required}, others...))
+	c.params.Hooks = append(c.params.Hooks, required)
+	for _, other := range others {
+		c.params.Hooks = append(c.params.Hooks, other)
+	}
 	c.params.Weakly = true
 	copy = c
 
@@ -90,7 +96,10 @@ func (c *Copy) Kind(required hook.Kind, others ...hook.Kind) (copy *Copy) {
 }
 
 func (c *Copy) Value(required hook.Value, others ...hook.Value) (copy *Copy) {
-	c.params.Hooks = append(c.params.Hooks, append([]hook.Value{required}, others...))
+	c.params.Hooks = append(c.params.Hooks, required)
+	for _, other := range others {
+		c.params.Hooks = append(c.params.Hooks, other)
+	}
 	c.params.Weakly = true
 	copy = c
 
