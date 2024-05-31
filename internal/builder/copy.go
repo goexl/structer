@@ -1,9 +1,9 @@
 package builder
 
 import (
-	"github.com/goexl/structer/internal/constant"
 	"github.com/goexl/structer/internal/core"
 	"github.com/goexl/structer/internal/hook"
+	"github.com/goexl/structer/internal/internal/constant"
 	"github.com/goexl/structer/internal/param"
 )
 
