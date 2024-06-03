@@ -28,11 +28,15 @@ func NewCopy() (copy *Copy) {
 
 	time := NewTime(copy)
 	duration := NewDuration(copy)
+	bytes := NewBytes(copy)
 	copy.Hooks = []mapstructure.DecodeHookFunc{
 		time.Protobuf,     // 从time.Time转换到timepb.Time
 		time.Internal,     // 从timepb.Time转换到time.Time
 		duration.Protobuf, // 从time.Duration转换到durationpb.Duration
 		duration.Internal, // 从durationpb.Duration转换到time.Duration
+
+		bytes.Protobuf,
+		bytes.Internal,
 	}
 
 	return

@@ -51,7 +51,7 @@ func (t *Time) Protobuf(ft reflect.Type, tt reflect.Type, from any) (to any, err
 }
 
 func (t *Time) Internal(ft reflect.Type, tt reflect.Type, from any) (to any, err error) {
-	name := tt.Name()
+	name := tt.String()
 	if name != constant.TimePtr && name != constant.Time {
 		to = from
 	} else if name == constant.Time && ft == variable.TypeMap {
