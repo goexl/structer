@@ -22,6 +22,7 @@ func NewDuration(params *Copy) *Duration {
 func (d *Duration) Protobuf(ft reflect.Type, tt reflect.Type, from any) (to any, err error) {
 	var seconds int64 = 0
 	var nanos int32 = 0
+	var set = false
 
 	name := ft.String()
 	if name == constant.DurationPtr && d.isProtobufType(tt) {
@@ -29,14 +30,16 @@ func (d *Duration) Protobuf(ft reflect.Type, tt reflect.Type, from any) (to any,
 		nano := duration.Nanoseconds()
 		seconds = nano / 1000000000
 		nanos = int32(nano % 1000000000)
+		set = true
 	} else if name == constant.Duration && d.isProtobufType(tt) {
 		duration := from.(time.Duration)
 		nano := duration.Nanoseconds()
 		seconds = nano / 1000000000
 		nanos = int32(nano % 1000000000)
+		set = true
 	}
 
-	if 0 != nanos || 0 != seconds {
+	if set {
 		secondsKey := gox.Ift(constant.Json == d.params.Tag, constant.KeySeconds, constant.KeySecondsUpper)
 		nanosKey := gox.Ift(constant.Json == d.params.Tag, constant.KeyNanos, constant.KeyNanosUpper)
 		to = &map[string]any{
