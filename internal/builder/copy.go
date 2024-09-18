@@ -3,6 +3,7 @@ package builder
 import (
 	"github.com/goexl/structer/internal/core"
 	"github.com/goexl/structer/internal/hook"
+	"github.com/goexl/structer/internal/internal/callback"
 	"github.com/goexl/structer/internal/internal/constant"
 	"github.com/goexl/structer/internal/param"
 )
@@ -73,6 +74,13 @@ func (c *Copy) ErrorOnUnset() (copy *Copy) {
 	return
 }
 
+func (c *Copy) Mapper(mapper callback.Mapper) (copy *Copy) {
+	c.params.Mapper = mapper
+	copy = c
+
+	return
+}
+
 func (c *Copy) Type(required hook.Type, others ...hook.Type) (copy *Copy) {
 	c.params.Hooks = append(c.params.Hooks, required)
 	for _, other := range others {
@@ -117,7 +125,7 @@ func (c *Copy) Json() *Copy {
 	return c.Tag(constant.Json)
 }
 
-func (c *Copy) Str() (copy *Copy) {
+func (c *Copy) Struct() (copy *Copy) {
 	return c.Tag(constant.DefaultTag)
 }
 

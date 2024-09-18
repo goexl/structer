@@ -1,6 +1,7 @@
 package param
 
 import (
+	"github.com/goexl/structer/internal/internal/callback"
 	"github.com/goexl/structer/internal/internal/constant"
 	"github.com/mitchellh/mapstructure"
 )
@@ -12,6 +13,7 @@ type Copy struct {
 	Unused   bool
 	Unset    bool
 	Untagged bool
+	Mapper   callback.Mapper
 
 	From any
 	To   any

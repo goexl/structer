@@ -25,12 +25,13 @@ func (c *Copy) Apply() (err error) {
 	config.ErrorUnset = c.params.Unset
 	config.WeaklyTypedInput = c.params.Weakly
 	config.IgnoreUntaggedFields = c.params.Untagged
+	config.MatchName = c.params.Mapper
 	if 0 != len(c.params.Hooks) {
 		config.DecodeHook = mapstructure.ComposeDecodeHookFunc(c.params.Hooks...)
 	}
 
-	if decoder, ne := mapstructure.NewDecoder(config); nil != ne {
-		err = ne
+	if decoder, nde := mapstructure.NewDecoder(config); nil != nde {
+		err = nde
 	} else {
 		err = decoder.Decode(c.params.From)
 	}
