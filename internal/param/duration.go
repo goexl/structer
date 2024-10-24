@@ -59,9 +59,16 @@ func (d *Duration) Internal(ft reflect.Type, tt reflect.Type, from any) (to any,
 		to = from
 	} else if toName == constant.Duration && ft == variable.TypeMap {
 		to = d.parseMap(from)
+	} else if toName == constant.Duration && ft.Kind() == reflect.String { // 字符串
+		to, err = time.ParseDuration(from.(string))
 	} else if toName == constant.DurationPtr && ft == variable.TypeMap {
 		toValue := d.parseMap(from)
 		to = &toValue
+	} else if toName == constant.DurationPtr && ft.Kind() == reflect.String { // 字符串
+		toValue, pde := time.ParseDuration(from.(string))
+		if nil == pde {
+			to = &toValue
+		}
 	}
 
 	return
