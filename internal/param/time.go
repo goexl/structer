@@ -59,14 +59,14 @@ func (t *Time) Internal(ft reflect.Type, tt reflect.Type, from any) (to any, err
 		secondsKey := gox.Ift(constant.Json == t.params.Tag, constant.KeySeconds, constant.KeySecondsUpper)
 		nanosKey := gox.Ift(constant.Json == t.params.Tag, constant.KeyNanos, constant.KeyNanosUpper)
 
-		var ts int64 = 0
+		var timestamp int64 = 0
 		if value, ok := data[secondsKey]; ok {
-			ts = ts + value.(int64)*time.Second.Nanoseconds()
+			timestamp = timestamp + value.(int64)*time.Second.Nanoseconds()
 		}
 		if value, ok := data[nanosKey]; ok {
-			ts = ts + value.(int64)
+			timestamp = timestamp + value.(int64)
 		}
-		to = time.Unix(0, ts)
+		to = time.Unix(0, timestamp)
 	}
 
 	return
